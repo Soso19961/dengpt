@@ -1,4 +1,6 @@
 {
-  "TELEGRAM_TOKEN": "",
-  "OPENAI_KEY": ""
+  "TELEGRAM_TOKEN": "6509403350:AAG_BdPmpq8RES93XrXOI9bNghu_Yii8MTA",
+  "OPENAI_KEY": "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",
+  "TEST_ENV": "dev"
+
 }

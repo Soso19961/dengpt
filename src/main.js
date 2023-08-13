@@ -15,10 +15,14 @@ bot.command('new', initCommand)
 
 bot.command('start', initCommand)
 
+bot.command('start', async (ctx) => {
+  await ctx.reply("<b>Добро пожаловать! Я готов ответить на ваши голосовые и текстовые вопросы. Просто начните диалог, отправив сообщение или нажав на иконку микрофона.</b>", { parse_mode: "HTML" });
+})
+
 bot.on(message('voice'), async (ctx) => {
   ctx.session ??= INITIAL_SESSION
   try {
-    await ctx.reply(code('Сообщение принял. Жду ответ от сервера...'))
+    await ctx.reply("<b><i>АлешкинGPT думает, ожидайте...</i></b>", { parse_mode: "HTML" });
     const link = await ctx.telegram.getFileLink(ctx.message.voice.file_id)
     const userId = String(ctx.message.from.id)
     const oggPath = await ogg.create(link.href, userId)
@@ -38,7 +42,7 @@ bot.on(message('voice'), async (ctx) => {
 bot.on(message('text'), async (ctx) => {
   ctx.session ??= INITIAL_SESSION
   try {
-    await ctx.reply(code('Сообщение принял. Жду ответ от сервера...'))
+    await ctx.reply("<b><i>АлешкинGPT думает, ожидайте...</i></b>", { parse_mode: "HTML" });
     await processTextToChat(ctx, ctx.message.text)
   } catch (e) {
     console.log(`Error while voice message`, e.message)
